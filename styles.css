@@ -87,27 +87,7 @@ h1 {
     color: var(--color-gold);
 }
 
-/* Quill accent - decorative element */
-.quill-accent {
-    width: 40px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--color-gold), transparent);
-    margin-bottom: var(--spacing-md);
-}
-
-.quill-accent.dark {
-    background: linear-gradient(90deg, var(--color-gold), transparent);
-}
-
-.quill-accent::before {
-    content: '';
-    display: block;
-    width: 6px;
-    height: 6px;
-    background: var(--color-gold);
-    border-radius: 50%;
-    margin-bottom: -4px;
-}
+/* Quill accent - removed */
 
 /* Highlight text */
 .highlight-text {
