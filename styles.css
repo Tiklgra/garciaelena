@@ -1,10 +1,10 @@
-/* ===== Variables - Rolex Inspired Premium ===== */
+/* ===== Variables - Elegant Dark Premium ===== */
 :root {
-    /* Colors - Deep Pine Green palette */
-    --color-primary: #1a3a2f;      /* Deep Pine Green */
-    --color-primary-light: #264d3d;
-    --color-gold: #a37e2c;         /* Rolex Gold */
-    --color-gold-light: #c9a227;
+    /* Colors - Deep Forest / Almost Black */
+    --color-primary: #0a1612;      /* Very Dark Forest - almost black */
+    --color-primary-light: #142620;
+    --color-gold: #8b7355;         /* Muted antique gold */
+    --color-gold-light: #a08968;
     --color-black: #1a1a1a;
     --color-charcoal: #2d2d2d;
     --color-white: #ffffff;
@@ -118,6 +118,55 @@ h1 {
     border-left: 2px solid var(--color-gold);
     padding-left: var(--spacing-md);
     margin: var(--spacing-md) 0;
+}
+
+/* Ink underline - antique pen style */
+.ink-underline {
+    position: relative;
+    display: inline;
+}
+
+.ink-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        var(--color-gold) 0%, 
+        var(--color-gold) 70%, 
+        transparent 100%);
+    opacity: 0.7;
+}
+
+/* Ink highlight - like pen marking */
+.ink-highlight {
+    background: linear-gradient(180deg, 
+        transparent 60%, 
+        rgba(139, 115, 85, 0.2) 60%);
+    padding: 0 4px;
+}
+
+/* Ink accent line */
+.ink-line {
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-gold), transparent);
+    margin: var(--spacing-md) 0;
+}
+
+.ink-line.center {
+    margin: var(--spacing-md) auto;
+}
+
+/* Pen stroke decoration */
+.pen-stroke::before {
+    content: '—';
+    color: var(--color-gold);
+    margin-right: 0.5rem;
+    opacity: 0.6;
 }
 
 h2 {
