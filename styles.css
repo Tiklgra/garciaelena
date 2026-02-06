@@ -1,8 +1,8 @@
 /* ===== Variables - Rolex Inspired Premium ===== */
 :root {
-    /* Colors - Rolex palette */
-    --color-primary: #006039;      /* Rolex Green */
-    --color-primary-light: #007a4a;
+    /* Colors - Deep Pine Green palette */
+    --color-primary: #1a3a2f;      /* Deep Pine Green */
+    --color-primary-light: #264d3d;
     --color-gold: #a37e2c;         /* Rolex Gold */
     --color-gold-light: #c9a227;
     --color-black: #1a1a1a;
@@ -79,6 +79,45 @@ h1, h2, h3, h4 {
 h1 {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 400;
+}
+
+/* Script text - elegant italic accent */
+.script-text {
+    font-style: italic;
+    color: var(--color-gold);
+}
+
+/* Quill accent - decorative element */
+.quill-accent {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-gold), transparent);
+    margin-bottom: var(--spacing-md);
+}
+
+.quill-accent.dark {
+    background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+.quill-accent::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: var(--color-gold);
+    border-radius: 50%;
+    margin-bottom: -4px;
+}
+
+/* Highlight text */
+.highlight-text {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--color-gold-light);
+    border-left: 2px solid var(--color-gold);
+    padding-left: var(--spacing-md);
+    margin: var(--spacing-md) 0;
 }
 
 h2 {
@@ -382,19 +421,47 @@ h4 {
     max-width: 800px;
     margin: 0 auto;
     padding: var(--spacing-lg) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .philosophy blockquote {
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
     font-style: italic;
     margin-bottom: var(--spacing-md);
     color: var(--color-gold-light);
+    position: relative;
+}
+
+.philosophy blockquote::before,
+.philosophy blockquote::after {
+    content: '"';
+    font-size: 3rem;
+    color: var(--color-gold);
+    opacity: 0.3;
+    position: absolute;
+}
+
+.philosophy blockquote::before {
+    top: -1rem;
+    left: -2rem;
+}
+
+.philosophy blockquote::after {
+    bottom: -2rem;
+    right: -1rem;
 }
 
 .philosophy p {
     font-size: 1.1rem;
     opacity: 0.8;
+}
+
+.philosophy p em {
+    color: var(--color-gold-light);
+    font-style: italic;
 }
 
 /* ===== Problems Grid ===== */
