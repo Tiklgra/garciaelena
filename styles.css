@@ -593,6 +593,12 @@ h4 {
     gap: var(--spacing-md);
 }
 
+.services-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
 .service-card {
     padding: var(--spacing-lg);
     border: 1px solid var(--color-gray-light);
@@ -849,6 +855,12 @@ h4 {
     }
     
     .services-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .services-grid-2x2 {
         grid-template-columns: 1fr;
         max-width: 500px;
         margin: 0 auto;
