@@ -1,8 +1,8 @@
 /* ===== Variables - Elegant Dark Premium ===== */
 :root {
-    /* Colors - Deep Forest / Almost Black */
-    --color-primary: #0a1612;      /* Very Dark Forest - almost black */
-    --color-primary-light: #142620;
+    /* Colors - Deep Forest */
+    --color-primary: #162c24;      /* Deep Forest - elegant dark green */
+    --color-primary-light: #1e3a30;
     --color-gold: #8b7355;         /* Muted antique gold */
     --color-gold-light: #a08968;
     --color-black: #1a1a1a;
@@ -300,13 +300,13 @@ h4 {
 
 .btn-outline {
     background: transparent;
-    color: var(--color-white);
-    border: 1px solid var(--color-white);
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
 }
 
 .btn-outline:hover {
-    background: var(--color-white);
-    color: var(--color-black);
+    background: var(--color-black);
+    color: var(--color-white);
 }
 
 .btn-large {
@@ -869,16 +869,27 @@ h4 {
         top: 80px;
         left: 0;
         right: 0;
-        bottom: 0;
         background: var(--color-white);
         flex-direction: column;
-        justify-content: center;
-        gap: var(--spacing-lg);
+        padding: var(--spacing-lg);
+        gap: var(--spacing-md);
         display: none;
+        border-bottom: 1px solid var(--color-gray-light);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
     .nav-menu.active {
         display: flex;
+    }
+    
+    .nav-menu a {
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid var(--color-gray-light);
+    }
+    
+    .nav-menu a:last-child {
+        border-bottom: none;
+        margin-top: var(--spacing-sm);
     }
 
     .nav-toggle {
