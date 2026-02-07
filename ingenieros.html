@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ingenieros | Elena García</title>
+    <meta name="description" content="Mentoría financiera para ingenieros con Blue Card en Alemania. Haz que tu sueldo trabaje para ti.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --color-primary: #1C1C1C;
+            --color-accent: #8B7355;
+            --color-cream: #FAF9F6;
+            --color-gray: #6b7280;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-primary);
+            line-height: 1.6;
+        }
+        
+        .landing-nav {
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-sizing: border-box;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+        }
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .landing-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 2rem 80px;
+            background: linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.96)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600') center/cover no-repeat;
+        }
+        .landing-hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero-label {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+        }
+        .landing-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+        .landing-hero h1 em {
+            font-style: italic;
+        }
+        .landing-hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--color-gray);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .landing-cta-box {
+            background: var(--color-primary);
+            color: white;
+            padding: 2.5rem 3rem;
+            border-radius: 4px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .landing-cta-box h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .landing-cta-box p {
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .btn-landing {
+            display: inline-block;
+            background: white;
+            color: var(--color-primary);
+            width: 100%;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        .btn-landing:hover {
+            background: var(--color-cream);
+        }
+        
+        .landing-section {
+            padding: 100px 2rem;
+        }
+        .landing-section.cream {
+            background: var(--color-cream);
+        }
+        .landing-section.dark {
+            background: var(--color-primary);
+            color: white;
+        }
+        .landing-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-label {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .landing-section.dark .section-label {
+            color: rgba(255,255,255,0.6);
+        }
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .pain-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .pain-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .pain-item:last-child {
+            border-bottom: none;
+        }
+        .pain-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        .pain-item p {
+            color: var(--color-gray);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            .solution-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        .solution-item {
+            text-align: center;
+        }
+        .solution-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1.25rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .solution-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .solution-item h4 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .solution-item p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        
+        .quote-section {
+            padding: 80px 2rem;
+            background: white;
+        }
+        .quote-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .quote-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .quote-image {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+        .quote-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .quote-content blockquote {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-primary);
+            margin: 0 0 1.5rem;
+            line-height: 1.5;
+        }
+        .quote-content cite {
+            color: var(--color-gray);
+            font-size: 0.9rem;
+            font-style: normal;
+        }
+        
+        .final-cta {
+            background: var(--color-cream);
+            padding: 120px 2rem;
+            text-align: center;
+        }
+        .final-cta h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+        .final-cta p {
+            color: var(--color-gray);
+            margin-bottom: 3.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        .btn-primary-landing {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 1.25rem 3rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary-landing:hover {
+            background: #333;
+        }
+        
+        .landing-footer {
+            background: var(--color-primary);
+            color: rgba(255,255,255,0.7);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        .landing-footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+        }
+        .landing-footer a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="landing-nav">
+        <a href="#" class="nav-logo">
+            <img src="https://garciaelena.com/wp-content/uploads/2024/07/Logo-Eagle_-1-edited.png" alt="Elena García" class="logo-img">
+            <span>Elena García</span>
+        </a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="landing-hero">
+        <div class="landing-hero-content">
+            <p class="hero-label">Para Ingenieros con Blue Card</p>
+            <h1>Viniste a Alemania a construir tu futuro.<br><em>¿Y tu patrimonio?</em></h1>
+            <p class="subtitle">Tienes la Blue Card, un buen sueldo y cero claridad sobre qué hacer con él. Mientras tanto, los impuestos se llevan el 42% y tu dinero duerme en una Girokonto.</p>
+            
+            <div class="landing-cta-box">
+                <h3>15 minutos para empezar a cambiar esto</h3>
+                <p>Una conversación. Sin compromiso. Sin presión. Solo para ver si puedo ayudarte.</p>
+                <a href="https://calendly.com/info-i0c/new-meeting" class="btn-landing" target="_blank" rel="noopener">Agendar Llamada Gratuita</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Section -->
+    <section class="landing-section cream">
+        <div class="landing-container">
+            <p class="section-label">Seamos Honestos</p>
+            <h2 class="section-title">Esto te suena, ¿verdad?</h2>
+            
+            <ul class="pain-list">
+                <li class="pain-item">
+                    <h3>Ganas más que nunca — pero no lo notas</h3>
+                    <p>Tu sueldo es bueno. Pero entre impuestos, alquiler y el costo de vida alemán, al final del mes no entiendes a dónde fue todo. Sientes que deberías estar avanzando más rápido.</p>
+                </li>
+                <li class="pain-item">
+                    <h3>No sabes si invertir aquí o en tu país</h3>
+                    <p>¿Compras propiedad en Alemania? ¿Mandas dinero a casa? ¿Inviertes en ETFs? Cada opción tiene implicaciones fiscales que no entiendes. Y tomar la decisión equivocada puede costarte años.</p>
+                </li>
+                <li class="pain-item">
+                    <h3>El sistema alemán te supera</h3>
+                    <p>Steuerklasse, Rentenversicherung, Riester, bAV... Eres ingeniero, resuelves problemas complejos todos los días. Pero las finanzas alemanas parecen diseñadas para confundirte.</p>
+                </li>
+                <li class="pain-item">
+                    <h3>No tienes a quién preguntarle</h3>
+                    <p>Tu familia está lejos y no entiende el sistema alemán. Tus colegas alemanes crecieron con esto. Y los "asesores" que te contactan solo quieren venderte algo. Te sientes solo en esto.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="landing-section dark">
+        <div class="landing-container">
+            <p class="section-label">La Alternativa</p>
+            <h2 class="section-title">Mentoría para tu realidad</h2>
+            
+            <div class="solution-grid">
+                <div class="solution-item">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h4>Claridad en semanas</h4>
+                    <p>No necesitas meses para entender. Te explico lo esencial del sistema alemán adaptado a tu situación específica.</p>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h4>Educación, no ventas</h4>
+                    <p>No vendo productos financieros. Te enseño a tomar tus propias decisiones con información real.</p>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h4>Entiendo tu situación</h4>
+                    <p>También soy extranjera en Alemania. Sé lo que es empezar de cero y construir patrimonio aquí.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+        <div class="quote-grid">
+            <div class="quote-image">
+                <img src="https://garciaelena.com/wp-content/uploads/2024/09/IMG_4814.jpeg" alt="Elena García">
+            </div>
+            <div class="quote-content">
+                <blockquote>"Llegué a Alemania sin entender el sistema. Hoy tengo más de medio millón en patrimonio — y ayudo a otros a hacer lo mismo, sin los errores que yo cometí."</blockquote>
+                <cite>— Elena García, Mentora Financiera</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="landing-container">
+            <h2>¿Listo para tomar el control?</h2>
+            <p>Una llamada de 15 minutos. Sin compromiso. Solo para ver si encajamos.</p>
+            <a href="https://calendly.com/info-i0c/new-meeting" class="btn-primary-landing" target="_blank" rel="noopener">Agendar Mi Llamada Gratuita</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+        <p>© 2026 Elena García · T&E Thrive Partners UG (haftungsbeschränkt)</p>
+        <p style="margin-top: 0.5rem;"><a href="impressum.html">Aviso Legal</a> · <a href="datenschutz.html">Privacidad</a></p>
+    </footer>
+</body>
+</html>
