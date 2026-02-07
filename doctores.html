@@ -54,35 +54,12 @@
             display: flex;
             align-items: center;
             padding: 140px 2rem 80px;
-            background: linear-gradient(180deg, var(--color-cream) 0%, #fff 100%);
-        }
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        @media (max-width: 900px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-image {
-                order: -1;
-                max-width: 350px;
-                margin: 0 auto;
-            }
+            background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.95)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600') center/cover no-repeat;
         }
         .landing-hero-content {
             max-width: 850px;
-        }
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            text-align: center;
         }
         .hero-label {
             text-transform: uppercase;
@@ -254,19 +231,40 @@
         
         .quote-section {
             padding: 80px 2rem;
-            text-align: center;
             background: white;
         }
-        .quote-section blockquote {
+        .quote-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .quote-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .quote-image {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+        .quote-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .quote-content blockquote {
             font-family: var(--font-heading);
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-style: italic;
             color: var(--color-primary);
-            max-width: 700px;
-            margin: 0 auto 1.5rem;
+            margin: 0 0 1.5rem;
             line-height: 1.5;
         }
-        .quote-section cite {
+        .quote-content cite {
             color: var(--color-gray);
             font-size: 0.9rem;
             font-style: normal;
@@ -331,20 +329,15 @@
 
     <!-- Hero -->
     <section class="landing-hero">
-        <div class="hero-grid">
-            <div class="landing-hero-content">
-                <p class="hero-label">Para Médicos en Alemania</p>
-                <h1>Pasaste 12 años entre la universidad y la Klinik.<br><em>¿Y tus finanzas?</em></h1>
-                <p class="subtitle">Mientras hacías el MIR, las guardias y la Facharztausbildung, otros invertían y compraban casas. Ahora finalmente ganas como Oberarzt o Facharzt — pero sientes que vas una década atrasado.</p>
-                
-                <div class="landing-cta-box">
-                    <h3>15 minutos que pueden cambiarlo todo</h3>
-                    <p>Una conversación. Sin compromiso. Sin presión. Solo para ver si puedo ayudarte.</p>
-                    <a href="https://calendly.com/info-i0c/new-meeting" class="btn-landing" target="_blank" rel="noopener">Agendar Llamada Gratuita</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://garciaelena.com/wp-content/uploads/2024/09/IMG_4814.jpeg" alt="Elena García - Mentoría Financiera">
+        <div class="landing-hero-content">
+            <p class="hero-label">Para Médicos en Alemania</p>
+            <h1>Pasaste 12 años entre la universidad y la Klinik.<br><em>¿Y tus finanzas?</em></h1>
+            <p class="subtitle">Mientras hacías el MIR, las guardias y la Facharztausbildung, otros invertían y compraban casas. Ahora finalmente ganas como Oberarzt o Facharzt — pero sientes que vas una década atrasado.</p>
+            
+            <div class="landing-cta-box">
+                <h3>15 minutos que pueden cambiarlo todo</h3>
+                <p>Una conversación. Sin compromiso. Sin presión. Solo para ver si puedo ayudarte.</p>
+                <a href="https://calendly.com/info-i0c/new-meeting" class="btn-landing" target="_blank" rel="noopener">Agendar Llamada Gratuita</a>
             </div>
         </div>
     </section>
@@ -410,9 +403,14 @@
 
     <!-- Quote -->
     <section class="quote-section">
-        <div class="landing-container">
-            <blockquote>"Yo también llegué a Alemania sin entender el sistema. Hoy tengo más de medio millón en patrimonio — y ayudo a otros a hacer lo mismo, sin los errores que yo cometí."</blockquote>
-            <cite>— Elena García</cite>
+        <div class="quote-grid">
+            <div class="quote-image">
+                <img src="https://garciaelena.com/wp-content/uploads/2024/09/IMG_4814.jpeg" alt="Elena García">
+            </div>
+            <div class="quote-content">
+                <blockquote>"Yo también llegué a Alemania sin entender el sistema. Hoy tengo más de medio millón en patrimonio — y ayudo a otros a hacer lo mismo, sin los errores que yo cometí."</blockquote>
+                <cite>— Elena García, Mentora Financiera</cite>
+            </div>
         </div>
     </section>
 
