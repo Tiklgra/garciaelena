@@ -10,7 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Landing page specific styles */
+        :root {
+            --color-primary: #1a1a2e;
+            --color-accent: #8B7355;
+            --color-cream: #FAF9F6;
+            --color-gray: #6b7280;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-primary);
+            line-height: 1.6;
+        }
+        
         .landing-nav {
             padding: 1.5rem 2rem;
             position: fixed;
@@ -19,8 +33,9 @@
             z-index: 100;
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
+            box-sizing: border-box;
         }
-        .landing-nav .nav-logo {
+        .nav-logo {
             display: flex;
             align-items: center;
             gap: 0.75rem;
@@ -29,7 +44,7 @@
             font-family: var(--font-heading);
             font-size: 1.25rem;
         }
-        .landing-nav .logo-img {
+        .logo-img {
             height: 40px;
             width: auto;
         }
@@ -38,262 +53,354 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 120px 2rem 80px;
-            background: linear-gradient(135deg, var(--color-cream) 0%, #fff 100%);
+            padding: 140px 2rem 80px;
+            background: linear-gradient(180deg, var(--color-cream) 0%, #fff 100%);
         }
         .landing-hero-content {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
             text-align: center;
         }
+        .hero-label {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+        }
         .landing-hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 500;
             line-height: 1.2;
             margin-bottom: 1.5rem;
             color: var(--color-primary);
         }
-        .landing-hero h1 span {
+        .landing-hero h1 em {
             font-style: italic;
-            color: var(--color-accent, #8B7355);
         }
         .landing-hero .subtitle {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--color-gray);
-            margin-bottom: 2.5rem;
-            line-height: 1.7;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .landing-cta-box {
             background: var(--color-primary);
             color: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            max-width: 500px;
+            padding: 2.5rem 3rem;
+            border-radius: 4px;
+            max-width: 480px;
             margin: 0 auto;
         }
         .landing-cta-box h3 {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
+            font-weight: 500;
         }
         .landing-cta-box p {
-            opacity: 0.9;
+            opacity: 0.85;
             margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
-        .landing-cta-box .btn {
+        .btn-landing {
+            display: inline-block;
             background: white;
             color: var(--color-primary);
             width: 100%;
             padding: 1rem 2rem;
             font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
         }
-        .landing-cta-box .btn:hover {
+        .btn-landing:hover {
             background: var(--color-cream);
         }
         
         .landing-section {
-            padding: 80px 2rem;
+            padding: 100px 2rem;
+        }
+        .landing-section.cream {
+            background: var(--color-cream);
         }
         .landing-section.dark {
             background: var(--color-primary);
             color: white;
         }
         .landing-container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
-        .pain-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        .section-label {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            text-align: center;
         }
-        .pain-card h3 {
+        .landing-section.dark .section-label {
+            color: rgba(255,255,255,0.6);
+        }
+        .section-title {
             font-family: var(--font-heading);
-            font-size: 1.3rem;
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .pain-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .pain-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .pain-item:last-child {
+            border-bottom: none;
+        }
+        .pain-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 500;
             margin-bottom: 0.75rem;
             color: var(--color-primary);
         }
-        .pain-card p {
+        .pain-item p {
             color: var(--color-gray);
-            line-height: 1.7;
+            line-height: 1.8;
+            font-size: 0.95rem;
         }
         
         .solution-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
             margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            .solution-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
         .solution-item {
             text-align: center;
-            padding: 1.5rem;
         }
-        .solution-item .icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .solution-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1.25rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .solution-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            fill: none;
+            stroke-width: 1.5;
         }
         .solution-item h4 {
             font-family: var(--font-heading);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
+            font-weight: 500;
             margin-bottom: 0.5rem;
         }
         .solution-item p {
-            opacity: 0.9;
-            font-size: 0.95rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+            line-height: 1.7;
         }
         
-        .trust-section {
-            background: var(--color-cream);
-            padding: 60px 2rem;
+        .quote-section {
+            padding: 80px 2rem;
             text-align: center;
+            background: white;
         }
-        .trust-section blockquote {
+        .quote-section blockquote {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-style: italic;
             color: var(--color-primary);
             max-width: 700px;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
+            line-height: 1.5;
         }
-        .trust-section cite {
+        .quote-section cite {
             color: var(--color-gray);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            font-style: normal;
         }
         
         .final-cta {
-            background: white;
-            padding: 80px 2rem;
+            background: var(--color-cream);
+            padding: 100px 2rem;
             text-align: center;
         }
         .final-cta h2 {
             font-family: var(--font-heading);
             font-size: 2rem;
+            font-weight: 500;
             margin-bottom: 1rem;
             color: var(--color-primary);
         }
-        .final-cta p {
+        .final-cta > p {
             color: var(--color-gray);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
         }
-        .final-cta .btn {
+        .btn-primary-landing {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
             padding: 1.25rem 3rem;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary-landing:hover {
+            background: #2a2a4e;
         }
         
         .landing-footer {
             background: var(--color-primary);
-            color: white;
+            color: rgba(255,255,255,0.7);
             padding: 2rem;
             text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.9;
+            font-size: 0.8rem;
         }
         .landing-footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+        }
+        .landing-footer a:hover {
             color: white;
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <!-- Simple Nav - No links to main site -->
+    <!-- Nav -->
     <nav class="landing-nav">
-        <div class="nav-logo">
+        <a href="#" class="nav-logo">
             <img src="https://garciaelena.com/wp-content/uploads/2024/07/Logo-Eagle_-1-edited.png" alt="Elena García" class="logo-img">
             <span>Elena García</span>
-        </div>
+        </a>
     </nav>
 
     <!-- Hero -->
     <section class="landing-hero">
         <div class="landing-hero-content">
-            <h1>Estudiaste 12 años para ser médico.<br><span>Pero nadie te enseñó qué hacer con el dinero.</span></h1>
-            <p class="subtitle">Finalmente ganas bien. Y aún así sientes que vas atrasado. Tus amigos tienen inversiones, tú tienes una Girokonto y mil preguntas sin respuesta.<br><br><strong>No estás solo — y no es tu culpa.</strong></p>
+            <p class="hero-label">Para Médicos en Alemania</p>
+            <h1>Pasaste 12 años entre la universidad y la Klinik.<br><em>¿Y tus finanzas?</em></h1>
+            <p class="subtitle">Mientras hacías el MIR, las guardias y la Facharztausbildung, otros invertían y compraban casas. Ahora finalmente ganas como Oberarzt o Facharzt — pero sientes que vas una década atrasado.</p>
             
             <div class="landing-cta-box">
-                <h3>Hablemos 15 minutos</h3>
-                <p>Sin compromiso. Sin ventas agresivas. Solo para ver si puedo ayudarte.</p>
-                <a href="https://calendly.com/info-i0c/new-meeting" class="btn" target="_blank" rel="noopener">Agendar Llamada Gratuita</a>
+                <h3>15 minutos que pueden cambiarlo todo</h3>
+                <p>Una conversación. Sin compromiso. Sin presión. Solo para ver si puedo ayudarte.</p>
+                <a href="https://calendly.com/info-i0c/new-meeting" class="btn-landing" target="_blank" rel="noopener">Agendar Llamada Gratuita</a>
             </div>
         </div>
     </section>
 
     <!-- Pain Section -->
-    <section class="landing-section">
+    <section class="landing-section cream">
         <div class="landing-container">
-            <div class="pain-card">
-                <h3>😤 "Debería tener mi vida financiera resuelta"</h3>
-                <p>Eres médico. La gente asume que lo tienes todo bajo control. Pero la verdad es que pasaste tus 20s estudiando mientras otros compraban casas y abrían depots. Ahora ganas más que ellos — pero te sientes 10 años atrasado.</p>
-            </div>
+            <p class="section-label">El Elefante en la Sala</p>
+            <h2 class="section-title">Lo que nadie dice en voz alta</h2>
             
-            <div class="pain-card">
-                <h3>🤯 "No entiendo el sistema alemán"</h3>
-                <p>Riester, Rürup, ETFs, Bausparvertrag, Steuerklassen... Eres experto en medicina, no en finanzas alemanas. Y cada vez que intentas investigar, terminas más confundido. No tienes 10 horas libres para convertirte en experto.</p>
-            </div>
-            
-            <div class="pain-card">
-                <h3>😒 "Ya no confío en nadie"</h3>
-                <p>Cada semana te contacta alguien de DVAG, MLP o Tecis queriendo "ayudarte". Sabes que eres target por tu sueldo. Has firmado cosas que no entendías. Ya no sabes quién te da información real y quién solo quiere su comisión.</p>
-            </div>
-            
-            <div class="pain-card">
-                <h3>😔 "Me da vergüenza no saber esto"</h3>
-                <p>No puedes preguntarle a tus colegas — ¿qué van a pensar? Eres médico, "deberías saber". Así que sigues en silencio, con el dinero acumulándose en una cuenta que no genera nada, mientras la inflación lo devora.</p>
-            </div>
+            <ul class="pain-list">
+                <li class="pain-item">
+                    <h3>Deberías tener tu vida resuelta — pero no es así</h3>
+                    <p>Eres Facharzt. La gente asume que lo tienes todo bajo control. Pero mientras hacías turnos de 24 horas, tus compañeros de universidad compraban inmuebles. Ahora ganas más que ellos — y aún así te sientes atrasado.</p>
+                </li>
+                <li class="pain-item">
+                    <h3>El sistema alemán parece diseñado para confundirte</h3>
+                    <p>Riester, Rürup, bAV, ETFs, Steuerklasse... Diagnosticas enfermedades raras, pero las finanzas alemanas te superan. Y no tienes 20 horas libres entre guardias para convertirte en experto.</p>
+                </li>
+                <li class="pain-item">
+                    <h3>Ya no confías en los "asesores"</h3>
+                    <p>Desde que empezaste a ganar bien, te contactan cada semana. MLP, DVAG, Tecis — todos quieren "ayudarte". Sabes que eres target por tu sueldo. Has firmado cosas que no entendías del todo. La desconfianza es total.</p>
+                </li>
+                <li class="pain-item">
+                    <h3>Te da vergüenza admitir que no sabes</h3>
+                    <p>¿Preguntarle a un colega? Imposible — ¿qué van a pensar? Así que tu dinero sigue en la Girokonto, la inflación lo devora, y el tiempo pasa. Cada mes te dices "el próximo mes lo resuelvo".</p>
+                </li>
+            </ul>
         </div>
     </section>
 
     <!-- Solution Section -->
     <section class="landing-section dark">
         <div class="landing-container">
-            <h2 style="text-align: center; font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Hay otra manera.</h2>
-            <p style="text-align: center; opacity: 0.9; max-width: 600px; margin: 0 auto;">No necesitas convertirte en experto financiero. Necesitas a alguien que te explique las cosas claras, sin venderte productos, y que entienda que tu tiempo vale oro.</p>
+            <p class="section-label">La Alternativa</p>
+            <h2 class="section-title">Mentoría diseñada para tu realidad</h2>
             
             <div class="solution-grid">
                 <div class="solution-item">
-                    <div class="icon">🎯</div>
-                    <h4>Claridad, no confusión</h4>
-                    <p>Te explico el sistema alemán como me hubiera gustado que me lo explicaran a mí. Sin jerga. Sin rodeos.</p>
-                </div>
-                <div class="solution-item">
-                    <div class="icon">🚫</div>
-                    <h4>Educación, no ventas</h4>
-                    <p>No vendo seguros ni fondos. Te enseño a tomar tus propias decisiones informadas.</p>
-                </div>
-                <div class="solution-item">
-                    <div class="icon">⏱️</div>
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
                     <h4>Respeto tu tiempo</h4>
-                    <p>Sesiones eficientes. Plan de acción claro. Sin tareas que requieran 20 horas de investigación.</p>
+                    <p>Sé que trabajas 50+ horas. Sesiones eficientes, plan claro, sin tareas que requieran investigar 10 horas.</p>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h4>Educación, no ventas</h4>
+                    <p>No vendo seguros ni fondos. Te enseño a entender el sistema y tomar tus propias decisiones informadas.</p>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h4>Sin jerga innecesaria</h4>
+                    <p>Te explico las cosas como me hubiera gustado que me las explicaran. Claro, directo, sin hacerte sentir ignorante.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust/About -->
-    <section class="trust-section">
+    <!-- Quote -->
+    <section class="quote-section">
         <div class="landing-container">
-            <blockquote>"Yo también llegué a Alemania sin entender nada. Hoy tengo más de 500k€ en patrimonio y ayudo a otros a hacer lo mismo — sin los errores que yo cometí."</blockquote>
-            <cite>— Elena García, Mentora Financiera</cite>
+            <blockquote>"Yo también llegué a Alemania sin entender el sistema. Hoy tengo más de medio millón en patrimonio — y ayudo a otros a hacer lo mismo, sin los errores que yo cometí."</blockquote>
+            <cite>— Elena García</cite>
         </div>
     </section>
 
     <!-- Final CTA -->
     <section class="final-cta">
         <div class="landing-container">
-            <h2>¿Listo para dejar de sentirte atrasado?</h2>
-            <p>Una llamada de 15 minutos. Sin compromiso. Solo para ver si puedo ayudarte.</p>
-            <a href="https://calendly.com/info-i0c/new-meeting" class="btn btn-primary" target="_blank" rel="noopener">Agendar Mi Llamada Gratuita</a>
+            <h2>¿Listo para dejar de postergar?</h2>
+            <p>Una llamada de 15 minutos. Sin compromiso. Solo para ver si encajamos.</p>
+            <a href="https://calendly.com/info-i0c/new-meeting" class="btn-primary-landing" target="_blank" rel="noopener">Agendar Mi Llamada Gratuita</a>
         </div>
     </section>
 
-    <!-- Minimal Footer -->
+    <!-- Footer -->
     <footer class="landing-footer">
-        <p>© 2026 Elena García | T&E Thrive Partners UG (haftungsbeschränkt)</p>
-        <p><a href="impressum.html">Aviso Legal</a> · <a href="datenschutz.html">Privacidad</a></p>
+        <p>© 2026 Elena García · T&E Thrive Partners UG (haftungsbeschränkt)</p>
+        <p style="margin-top: 0.5rem;"><a href="impressum.html">Aviso Legal</a> · <a href="datenschutz.html">Privacidad</a></p>
     </footer>
 </body>
 </html>
