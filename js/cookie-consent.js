@@ -2,13 +2,20 @@
 (function() {
     const CONSENT_KEY = 'cookie_consent';
     
-    // Check if consent was already given
-    function hasConsent() {
-        return localStorage.getItem(CONSENT_KEY) === 'accepted';
+    // Check if user explicitly declined
+    function hasDeclined() {
+        return localStorage.getItem(CONSENT_KEY) === 'declined';
+    }
+    
+    // Check if user made any choice
+    function hasChoice() {
+        return localStorage.getItem(CONSENT_KEY) !== null;
     }
     
     // Load Microsoft Clarity
     function loadClarity() {
+        if (window.clarityLoaded) return;
+        window.clarityLoaded = true;
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -19,13 +26,16 @@
     // Save consent
     function acceptCookies() {
         localStorage.setItem(CONSENT_KEY, 'accepted');
-        loadClarity();
         hideBanner();
     }
     
     function declineCookies() {
         localStorage.setItem(CONSENT_KEY, 'declined');
         hideBanner();
+        // Disable Clarity if it was loaded
+        if (window.clarity) {
+            window.clarity('stop');
+        }
     }
     
     function hideBanner() {
@@ -44,9 +54,13 @@
     
     // Initialize
     function init() {
-        if (hasConsent()) {
+        // Load Clarity unless explicitly declined
+        if (!hasDeclined()) {
             loadClarity();
-        } else if (localStorage.getItem(CONSENT_KEY) !== 'declined') {
+        }
+        
+        // Show banner if no choice made yet
+        if (!hasChoice()) {
             showBanner();
         }
     }
