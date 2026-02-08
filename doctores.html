@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ve6pyqy11i");
-    </script>
+    <!-- Cookie Consent -->
+    <script src="js/cookie-consent.js" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Médicos | Elena García</title>
@@ -466,5 +460,18 @@
         <p>© 2026 Elena García · T&E Thrive Partners UG (haftungsbeschränkt)</p>
         <p style="margin-top: 0.5rem;"><a href="impressum.html">Aviso Legal</a> · <a href="datenschutz.html">Privacidad</a></p>
     </footer>
+<!-- Cookie Banner -->
+    <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #1C1C1C; color: white; padding: 1.5rem 2rem; z-index: 9999; box-shadow: 0 -4px 20px rgba(0,0,0,0.15);">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+            <p style="margin: 0; flex: 1; min-width: 280px; font-size: 0.9rem; line-height: 1.6;">
+                Utilizamos cookies para analizar el uso del sitio web y mejorar tu experiencia. 
+                <a href="datenschutz.html" style="color: #8B7355; text-decoration: underline;">Más información</a>
+            </p>
+            <div style="display: flex; gap: 0.75rem;">
+                <button onclick="cookieConsent.decline()" style="padding: 0.75rem 1.5rem; background: transparent; border: 1px solid white; color: white; cursor: pointer; font-size: 0.85rem;">Rechazar</button>
+                <button onclick="cookieConsent.accept()" style="padding: 0.75rem 1.5rem; background: white; border: none; color: #1C1C1C; cursor: pointer; font-size: 0.85rem; font-weight: 600;">Aceptar</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
